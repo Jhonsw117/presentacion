@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Energías Renovables</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            overflow-x: hidden;
+        }
+        .navbar {
+            background-color: #004aad;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .navbar li {
+            margin: 0 20px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            padding: 10px;
+            transition: background-color 0.3s;
+        }
+        .navbar a:hover {
+            background-color: #0066cc;
+            border-radius: 5px;
+        }
+        .slide {
+            width: 100%;
+            max-width: 960px;
+            min-height: 540px;
+            margin: 20px auto;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            padding: 20px;
+            box-sizing: border-box;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .slide.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide h1 {
+            color: #004aad;
+            font-size: 2.5em;
+            margin: 0.5em 0;
+            animation: fadeInDown 0.8s ease;
+        }
+        .slide h2 {
+            color: #0066cc;
+            font-size: 1.8em;
+            margin: 0.5em 0;
+            animation: fadeIn 0.8s ease;
+        }
+        .slide p, .slide ul {
+            font-size: 1.2em;
+            color: #333;
+            margin: 0.5em 0;
+            text-align: left;
+            max-width: 90%;
+            animation: fadeInUp 0.8s ease;
+        }
+        .slide ul {
+            list-style-type: disc;
+            padding-left: 40px;
+        }
+        .slide li {
+            opacity: 0;
+            animation: slideInLeft 0.5s ease forwards;
+        }
+        .slide li:nth-child(1) { animation-delay: 0.2s; }
+        .slide li:nth-child(2) { animation-delay: 0.4s; }
+        .slide li:nth-child(3) { animation-delay: 0.6s; }
+        .slide li:nth-child(4) { animation-delay: 0.8s; }
+        .slide li:nth-child(5) { animation-delay: 1.0s; }
+        .slide table {
+            width: 90%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+            animation-delay: 0.5s;
+        }
+        .slide th, .slide td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        .slide th {
+            background-color: #0066cc;
+            color: white;
+        }
+        .slide img {
+            max-width: 80%;
+            height: auto;
+            margin: 10px 0;
+            border-radius: 8px;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+            animation-delay: 0.7s;
+        }
+        .footer {
+            font-size: 0.9em;
+            color: #666;
+            text-align: center;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+            animation-delay: 1s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <div class="navbar">
+        <ul>
+            <li><a href="#portada">Portada</a></li>
+            <li><a href="#introduccion">Introducción</a></li>
+            <li><a href="#solar">Energía Solar</a></li>
+            <li><a href="#hidraulica">Energía Hidráulica</a></li>
+            <li><a href="#eolica">Energía Eólica</a></li>
+            <li><a href="#comparativa">Comparativa</a></li>
+            <li><a href="#conclusiones">Conclusiones</a></li>
+            <li><a href="#recomendaciones">Recomendaciones</a></li>
+            <li><a href="#referencias">Referencias</a></li>
+        </ul>
+    </div>
+
+    <!-- Slide 1: Portada -->
+    <div class="slide" id="portada">
+        <h1>ANÁLISIS DE ENERGÍAS RENOVABLES: SOLAR, HIDRÁULICA Y EÓLICA</h1>
+        <p>Jhon Ortega</p>
+        <p>Universidad de Caldas</p>
+        <p>Enero 2025</p>
+        <img src="https://www.uac.edu.co/wp-content/uploads/2023/01/821e82510d42213c52dadeb31bd1893a.jpg" alt="Renewable Energy Overview">
+        <div class="footer">Córdoba, Nariño</div>
+    </div>
+
+    <!-- Slide 2: Introducción -->
+    <div class="slide" id="introduccion">
+        <h1>Introducción</h1>
+        <p>El cambio climático, la contaminación y la desigualdad energética son retos globales. En Córdoba, Nariño, la topografía montañosa, abundantes ríos y clima tropical húmedo crean un entorno ideal para energías renovables. Según el DANE, el 60% de las comunidades rurales carecen de acceso estable a la red eléctrica, dependiendo de generadores diésel o gasolina, costosos y contaminantes.</p>
+        <p>Las energías solar, hidráulica y eólica aprovechan recursos inagotables: sol, agua y viento. Estas fuentes son limpias, sostenibles y cada vez más asequibles, con costos reducidos en un 80% desde 2010 (IRENA). Este informe analiza su funcionamiento, aplicaciones, impactos y viabilidad en Córdoba, promoviendo soluciones para la equidad energética.</p>
+        <img src="https://img.impactotic.co/wp-content/uploads/2023/09/13133415/Energia-renovable-1024x685.jpg.webp" alt="Córdoba Landscape">
+    </div>
+
+    <!-- Slide 3: Energía Solar - Descripción y Tecnologías -->
+    <div class="slide" id="solar">
+        <h1>Energía Solar</h1>
+        <h2>Descripción</h2>
+        <p>La energía solar captura la radiación electromagnética del sol (~1361 W/m²) para producir electricidad, calor o energía química. Es la fuente renovable de mayor crecimiento, con una capacidad global de 1 TW en 2023 (IRENA).</p>
+        <h2>Tecnologías</h2>
+        <ul>
+            <li>Fotovoltaica (PV): Convierte luz en electricidad mediante silicio. Monocristalinos (15-22% eficiencia), policristalinos (13-16%), película delgada (10-12%), bifaciales (hasta 25% más producción).</li>
+            <li>Térmica: Calienta fluidos para agua caliente o procesos industriales. Incluye colectores de placa plana, tubos evacuados y concentradores de alta temperatura.</li>
+            <li>Concentración Solar (CSP): Usa espejos para generar electricidad en plantas a gran escala (torres, canales parabólicos). Permite almacenamiento térmico para uso nocturno.</li>
+            <li>Emergentes: Células de perovskita (eficiencia potencial 30%), fotovoltaicos orgánicos (OPV) para superficies curvas, híbridos PV-T (eléctrica + térmica).</li>
+        </ul>
+        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276" alt="Solar Panels">
+    </div>
+
+    <!-- Slide 4: Energía Solar - Aplicaciones e Impacto -->
+    <div class="slide">
+        <h2>Aplicaciones</h2>
+        <ul>
+            <li>Domésticas: Electricidad, agua caliente, cocinas solares, carga de dispositivos en hogares.</li>
+            <li>Industriales: Bombeo de agua, refrigeración, desalinización, procesos térmicos (alimentaria, textil).</li>
+            <li>Públicas: Iluminación de calles, semáforos, estaciones de carga para vehículos eléctricos.</li>
+            <li>Rurales: Electrificación de aldeas, purificación de agua, soporte a microempresas en Córdoba.</li>
+            <li>Emergentes: Vehículos solares, edificios de energía cero, agricultura solar (agrivoltaica), IoT.</li>
+        </ul>
+        <h2>Impacto</h2>
+        <ul>
+            <li>Ambiental: Reduce 4-6 ton CO2/año por sistema de 5 kW. Fabricación consume silicio y metales raros, pero reciclaje recupera 95% de componentes.</li>
+            <li>Social: Electrifica >700M personas en áreas remotas, mejora educación (iluminación nocturna), salud (refrigeración de vacunas) y empodera mujeres.</li>
+            <li>Económico: Ahorro de miles de dólares en 25 años, >12M empleos globales en 2022, costos cayeron 80% desde 2010 (IRENA).</li>
+            <li>Tecnológico: Avances en baterías de litio, hidrógeno verde y gestión energética con IA.</li>
+        </ul>
+        <img src="https://energydcac.com/wp-content/uploads/2023/05/sistema_fotovoltaico_para_casa_im.jpg" alt="Solar Installation">
+    </div>
+
+    <!-- Slide 5: Energía Solar - Desafíos e Innovaciones -->
+    <div class="slide">
+        <h2>Desafíos</h2>
+        <ul>
+            <li>Inversión inicial alta (aunque cae 10% anual), intermitencia requiere baterías costosas.</li>
+            <li>Impacto de fabricación y residuos (paneles duran 20-30 años).</li>
+            <li>Competencia por suelo en grandes plantas, potencial conflicto con agricultura en Córdoba.</li>
+        </ul>
+        <h2>Innovaciones</h2>
+        <ul>
+            <li>Células de alta eficiencia (perovskita, tándem), paneles transparentes, tejas solares.</li>
+            <li>Plantas solares flotantes en embalses, ideales para Nariño.</li>
+            <li>Modelos de pago por uso y microcréditos para democratizar acceso en comunidades rurales.</li>
+            <li>Integración con redes inteligentes y blockchain para gestión energética.</li>
+        </ul>
+        <h2>Casos de Éxito</h2>
+        <ul>
+            <li>India: Parque Solar Bhadla (2.2 GW, abastece 1.5M hogares).</li>
+            <li>África: Solar Home Systems electrifican 10M hogares.</li>
+            <li>Australia: 30% de hogares con paneles solares, líder en adopción doméstica.</li>
+        </ul>
+        <img src="https://img.lalr.co/cms/2022/04/13170031/Eco_energiaSolar_Pag7-Lunes.jpg?" alt="Floating Solar Plant">
+    </div>
+
+    <!-- Slide 6: Energía Hidráulica - Descripción y Tecnologías -->
+    <div class="slide" id="hidraulica">
+        <h1>Energía Hidráulica</h1>
+        <h2>Descripción</h2>
+        <p>La energía hidráulica convierte la energía cinética/potencial del agua en electricidad. Representa 16% de la electricidad mundial (AIE, 2023) y es clave en Colombia, con 70% de la matriz energética hidroeléctrica.</p>
+        <h2>Tecnologías</h2>
+        <ul>
+            <li>Embalse: Presas como Tres Gargantas (22.5 GW) almacenan agua para generación controlada.</li>
+            <li>Flujo Libre: Usa caudal natural, ideal para ríos de Nariño con bajo impacto.</li>
+            <li>Bombeo: Almacena energía subiendo agua a embalses superiores (ej. Dinorwig, Reino Unido).</li>
+            <li>Mini/Micro: Hasta 10 MW/100 kW, perfectas para aldeas andinas en Córdoba.</li>
+            <li>Hidrocinética: Turbinas en corrientes sin presas, en desarrollo para ríos rápidos.</li>
+        </ul>
+        <img src="https://www.factorenergia.com/wp-content/webp-express/webp-images/uploads/2021/02/energia-hidraulica.jpg.webp" alt="Hydroelectric Dam">
+    </div>
+
+    <!-- Slide 7: Energía Hidráulica - Aplicaciones e Impacto -->
+    <div class="slide">
+        <h2>Aplicaciones</h2>
+        <ul>
+            <li>Gran Escala: Alimenta redes nacionales (Itaipú, 103 TWh/año).</li>
+            <li>Rural: Microcentrales para electrificación y actividades económicas en Córdoba.</li>
+            <li>Agricultura: Riego automatizado, sostenibilidad hídrica para cultivos locales.</li>
+            <li>Industrial: Minería, producción de hidrógeno verde para exportación.</li>
+            <li>Emergentes: Sistemas híbridos con solar, energía mareomotriz en costas cercanas.</li>
+        </ul>
+        <h2>Impacto</h2>
+        <ul>
+            <li>Ambiental: Evita 300,000 ton CO2/año por 100 MW vs. carbón, pero altera ecosistemas y emite metano en embalses tropicales.</li>
+            <li>Social: Electrifica regiones, pero desplaza comunidades (1.3M por Tres Gargantas).</li>
+            <li>Económico: Bajo costo operativo ($0.01/kWh), vida útil 50-100 años, inversión inicial alta ($1,000-5,000/kW).</li>
+            <li>Tecnológico: Turbinas de bajo impacto, monitoreo con IoT y IA.</li>
+        </ul>
+        <img src="https://deingenierias.com/wp-content/uploads/Partes-de-una-central-hidroelectrica-e1552249917302.jpg" alt="Micro Hydro Plant">
+    </div>
+
+    <!-- Slide 8: Energía Hidráulica - Desafíos e Innovaciones -->
+    <div class="slide">
+        <h2>Desafíos</h2>
+        <ul>
+            <li>Impacto ambiental: Pérdida de biodiversidad, alteración de ríos en Nariño.</li>
+            <li>Social: Desplazamientos y conflictos con comunidades indígenas.</li>
+            <li>Climático: Sequías por cambio climático reducen caudal de ríos.</li>
+            <li>Geopolítico: Conflictos transfronterizos por agua (ej. río Nilo).</li>
+        </ul>
+        <h2>Innovaciones</h2>
+        <ul>
+            <li>Turbinas sin aspas, hidroeléctrica modular para pequeños ríos.</li>
+            <li>Digitalización con IA para optimizar operación y mantenimiento.</li>
+            <li>Rehabilitación de presas antiguas para mayor eficiencia.</li>
+            <li>Híbridos con almacenamiento en baterías para estabilidad.</li>
+        </ul>
+        <h2>Casos de Éxito</h2>
+        <ul>
+            <li>Noruega: 95% de electricidad hidroeléctrica, modelo de sostenibilidad.</li>
+            <li>Brasil-Paraguay: Presa Itaipú, abastece 15% de Brasil.</li>
+            <li>Bhután: Microcentrales transforman aldeas rurales.</li>
+        </ul>
+        <img src="https://img.lalr.co/cms/2019/02/18174852/Especiales_Hidroelectricas_p16.jpg" alt="Hydro Turbine">
+    </div>
+
+    <!-- Slide 9: Energía Eólica - Descripción y Tecnologías -->
+    <div class="slide" id="eolica">
+        <h1>Energía Eólica</h1>
+        <h2>Descripción</h2>
+        <p>La energía eólica usa la energía cinética del viento para generar electricidad. Representa 8% de la electricidad global (AIE, 2023), con un crecimiento del 15% anual.</p>
+        <h2>Tecnologías</h2>
+        <ul>
+            <li>Eje Horizontal (HAWT): Aerogeneradores comunes, hasta 15 MW (parques marinos).</li>
+            <li>Eje Vertical (VAWT): Menos eficientes, ideales para entornos urbanos.</li>
+            <li>Terrestres: En llanuras/colinas (Gansu, China, 8 GW).</li>
+            <li>Marinos (Offshore): Vientos fuertes, costosos (Hornsea, 1.2 GW).</li>
+            <li>Pequeños: Para granjas/comunidades (1-100 kW) en Córdoba.</li>
+            <li>Emergentes: Sin palas, cometas eólicas, turbinas flotantes.</li>
+        </ul>
+        <img src="https://www.enelgreenpower.com/content/dam/enel-egp/immagini/learning-hub/energia-eolica/Card_Module-learning-hub-parco-eolico.jpg.resize.560.740.center.center@2x.jpeg" alt="Wind Turbines">
+    </div>
+
+    <!-- Slide 10: Energía Eólica - Aplicaciones e Impacto -->
+    <div class="slide">
+        <h2>Aplicaciones</h2>
+        <ul>
+            <li>Redes: Parques eólicos alimentan ciudades (Dogger Bank, 6M hogares).</li>
+            <li>Rural: Turbinas pequeñas para granjas en Nariño.</li>
+            <li>Híbridos: Con solar para estabilidad (Port Augusta, Australia).</li>
+            <li>Industrial: Desalinización, hidrógeno verde para exportación.</li>
+            <li>Emergentes: Carga de vehículos eléctricos, turbinas urbanas.</li>
+        </ul>
+        <h2>Impacto</h2>
+        <ul>
+            <li>Ambiental: Evita 4,000 ton CO2/año por turbina de 2 MW, pero afecta aves (140,000-500,000 muertes/año en EE.UU.).</li>
+            <li>Social: 1.2M empleos globales (IRENA, 2022), resistencia por ruido (50-60 dB).</li>
+            <li>Económico: LCOE $25-50/MWh, competitivo, inversión inicial $1,200-5,000/kW.</li>
+            <li>Tecnológico: Materiales ligeros, IA para predicción de vientos.</li>
+        </ul>
+        <img src="https://cyzcorp.com/wp-content/uploads/2023/03/reno-6.2.jpg" alt="Offshore Wind Farm">
+    </div>
+
+    <!-- Slide 11: Energía Eólica - Desafíos e Innovaciones -->
+    <div class="slide">
+        <h2>Desafíos</h2>
+        <ul>
+            <li>Intermitencia requiere almacenamiento (baterías, hidrógeno).</li>
+            <li>Impacto visual y ruido, reciclaje de palas (vida útil 20 años).</li>
+            <li>Dependencia de zonas ventosas, menos viables en valles de Córdoba.</li>
+        </ul>
+        <h2>Innovaciones</h2>
+        <ul>
+            <li>Turbinas de 15-20 MW, flotantes para aguas profundas.</li>
+            <li>Palas reciclables, diseños sin tierras raras.</li>
+            <li>Eólica urbana con VAWT, integración en edificios.</li>
+            <li>Sensores para evitar colisiones con aves.</li>
+        </ul>
+        <h2>Casos de Éxito</h2>
+        <ul>
+            <li>Dinamarca: 50% de electricidad eólica, líder global.</li>
+            <li>China: 300 GW instalados, mayor capacidad eólica.</li>
+            <li>Kenia: Parque Turkana (310 MW) electrifica regiones remotas.</li>
+        </ul>
+        <img src="https://www.empsii.com/sitio/wp-content/uploads/2022/05/web.png" alt="Wind Turbine Installation">
+    </div>
+
+    <!-- Slide 12: Comparativa -->
+    <div class="slide" id="comparativa">
+        <h1>Comparativa</h1>
+        <table>
+            <tr>
+                <th>Criterio</th>
+                <th>Hidráulica</th>
+                <th>Solar</th>
+                <th>Eólica</th>
+            </tr>
+            <tr>
+                <td>Eficiencia</td>
+                <td>Alta (90%)</td>
+                <td>Moderada (15-22%)</td>
+                <td>Moderada (50%)</td>
+            </tr>
+            <tr>
+                <td>Accesibilidad</td>
+                <td>Limitada (ríos)</td>
+                <td>Universal</td>
+                <td>Zonas ventosas</td>
+            </tr>
+            <tr>
+                <td>Impacto Ambiental</td>
+                <td>Alto (ecosistemas)</td>
+                <td>Bajo (fabricación)</td>
+                <td>Moderado (aves)</td>
+            </tr>
+            <tr>
+                <td>Costo Inicial</td>
+                <td>Alto ($1,000-5,000/kW)</td>
+                <td>Moderado ($800-2,000/kW)</td>
+                <td>Moderado-Alto ($1,200-5,000/kW)</td>
+            </tr>
+            <tr>
+                <td>Vida Útil</td>
+                <td>50-100 años</td>
+                <td>20-30 años</td>
+                <td>20-30 años</td>
+            </tr>
+        </table>
+        <p><strong>Factores Contextuales:</strong> Hidráulica es ideal para ríos de Nariño, solar para áreas remotas, eólica para zonas altas ventosas. Sequías afectan hidráulica, nubosidad a solar, y vientos variables a eólica.</p>
+        <img src="https://imgcdn.larepublica.co/cms/2020/02/18161738/EspPotenciaEnergetica_EnergiasAlternativas_p.jpg?" alt="Renewable Energy Mix">
+    </div>
+
+    <!-- Slide 13: Conclusiones -->
+    <div class="slide" id="conclusiones">
+        <h1>Conclusiones</h1>
+        <ul>
+            <li>Sostenibilidad: Las tres fuentes reducen emisiones, pero requieren mitigación de impactos (ecosistemas, fauna, residuos).</li>
+            <li>Social/Económico: Generan empleos (12M solar, 1.2M eólica), mejoran acceso energético en Córdoba.</li>
+            <li>Complementariedad: Solar para comunidades remotas, hidráulica para ríos, eólica para zonas altas.</li>
+            <li>Innovación: Almacenamiento (baterías, bombeo), materiales reciclables y digitalización impulsan viabilidad.</li>
+            <li>Equidad: Priorizar comunidades marginadas reduce desigualdades energéticas en Nariño.</li>
+        </ul>
+        <img src="https://comercial.reforma.com/libre/comercial/campanas/infra_marzo23/img/encabezados_secciones/1.jpg" alt="Sustainable Future">
+    </div>
+
+    <!-- Slide 14: Recomendaciones -->
+    <div class="slide" id="recomendaciones">
+        <h1>Recomendaciones</h1>
+        <ul>
+            <li>Solar: Implementar sistemas off-grid en zonas rurales de Córdoba con microcréditos y soluciones portátiles.</li>
+            <li>Hidráulica: Priorizar microcentrales de flujo libre, involucrar comunidades indígenas en planificación.</li>
+            <li>Eólica: Desarrollar cooperativas eólicas comunitarias, usar sensores para proteger fauna local.</li>
+            <li>Políticas: Subsidios, tarifas de alimentación, financiar I+D en perovskita y turbinas flotantes.</li>
+            <li>Educación: Capacitar técnicos locales, campañas de concienciación en escuelas de Nariño.</li>
+            <li>Híbridos: Desplegar microrredes solar-eólica con almacenamiento en baterías o hidrógeno.</li>
+            <li>Sostenibilidad: Usar terrenos degradados, establecer reciclaje para paneles y palas.</li>
+        </ul>
+        <img src="https://www.metrocuadrado.com/sites/noticias-m2/files/infografia_hogares.jpg" alt="Community Energy Project">
+    </div>
+<!-- Slide 15: Referencias -->
+<div class="slide" id="referencias">
+    <h1>Referencias</h1>
+    <ul>
+        <li>Agencia Internacional de Energías Renovables (IRENA). Costos de Generación de Energía Renovable en 2022. 2023. Disponible en: <a href="https://www.irena.org/Publications/2023/Aug/Renewable-Power-Generation-Costs-in-2022" target="_blank">https://www.irena.org/Publications/2023/Aug/Renewable-Power-Generation-Costs-in-2022</a></li>
+        <li>Instituto Fraunhofer de Sistemas de Energía Solar. Informe Fotovoltaico. 2023. Disponible en: <a href="https://www.ise.fraunhofer.de/en/publications/studies/photovoltaics-report.html" target="_blank">https://www.ise.fraunhofer.de/en/publications/studies/photovoltaics-report.html</a></li>
+        <li>Laboratorio Nacional de Energías Renovables (NREL). Conceptos Básicos de la Tecnología Solar Fotovoltaica. 2024. Disponible en: <a href="https://www.nrel.gov/research/re-photovoltaics.html" target="_blank">https://www.nrel.gov/research/re-photovoltaics.html</a></li>
+        <li>Agencia Internacional de Energía (AIE). Perspectivas de la Energía Mundial 2023. 2023. Disponible en: <a href="https://www.iea.org/reports/world-energy-outlook-2023" target="_blank">https://www.iea.org/reports/world-energy-outlook-2023</a></li>
+        <li>Fundación Ellen MacArthur. Economía Circular para Paneles PV Solares. 2022. Disponible en: <a href="https://www.ellenmacarthurfoundation.org/circular-economy-for-solar-pv" target="_blank">https://www.ellenmacarthurfoundation.org/circular-economy-for-solar-pv</a></li>
+        <li>Asociación Internacional de Energía Hidroeléctrica (IHA). Informe de Estado de la Energía Hidroeléctrica 2023. 2023. Disponible en: <a href="https://www.hydropower.org/publications/hydropower-status-report-2023" target="_blank">https://www.hydropower.org/publications/hydropower-status-report-2023</a></li>
+        <li>Agencia Internacional de Energía (AIE). Informe Especial del Mercado Hidroeléctrico. 2024. Disponible en: <a href="https://www.iea.org/reports/hydropower-special-market-report" target="_blank">https://www.iea.org/reports/hydropower-special-market-report</a></li>
+        <li>Banco Mundial. Energía Hidroeléctrica y Presas: Impactos Ambientales y Sociales. 2022. Disponible en: <a href="https://www.worldbank.org/en/topic/hydropower" target="_blank">https://www.worldbank.org/en/topic/hydropower</a></li>
+        <li>Programa de las Naciones Unidas para el Medio Ambiente (PNUMA). Directrices de Energía Hidroeléctrica Sostenible. 2023. Disponible en: <a href="https://www.unep.org/resources/report/sustainable-hydropower" target="_blank">https://www.unep.org/resources/report/sustainable-hydropower</a></li>
+        <li>Agencia Internacional de Energía (AIE). Renovables 2023: Análisis y Pronóstico para 2028. 2023. Disponible en: <a href="https://www.iea.org/reports/renewables-2023" target="_blank">https://www.iea.org/reports/renewables-2023</a></li>
+        <li>Agencia Internacional de Energías Renovables (IRENA). Energías Renovables y Empleos – Annual Review 2023. 2023. Disponible en: <a href="https://www.irena.org/Publications/2023/Sep/Renewable-Energy-and-Jobs-Annual-Review-2023" target="_blank">https://www.irena.org/Publications/2023/Sep/Renewable-Energy-and-Jobs-Annual-Review-2023</a></li>
+        <li>Consejo Mundial de Energía Eólica (GWEC). Informe Global del Viento 2024. 2024. Disponible en: <a href="https://gwec.net/global-wind-report-2024/" target="_blank">https://gwec.net/global-wind-report-2024/</a></li>
+        <li>Agencia Internacional de Energías Renovables (IRENA). Futuro del viento: Despliegue, Inversión, Tecnología, Integración de Red. 2023. Disponible en: <a href="https://www.irena.org/Publications/2023/Oct/Future-of-Wind" target="_blank">https://www.irena.org/Publications/2023/Oct/Future-of-Wind</a></li>
+        <li>Asociación Americana de Energía Eólica (AWEA). Impactos de la Energía Eólica y la Vida Silvestre. 2023. Disponible en: <a href="https://www.awea.org/wind-energy-and-wildlife" target="_blank">https://www.awea.org/wind-energy-and-wildlife</a></li>
+    </ul>
+</div>
+
+
+    <script>
+        // Animación al cargar y al hacer scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            
+            // Mostrar la primera diapositiva al cargar
+            slides[0].classList.add('visible');
+
+            // Observador para animar diapositivas al hacer scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            slides.forEach(slide => observer.observe(slide));
+
+            // Suavizar el desplazamiento al hacer clic en los enlaces del menú
+            document.querySelectorAll('.navbar a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
